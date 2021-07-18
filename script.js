@@ -15,6 +15,8 @@ let food = {
     y: Math.floor(Math.random() * 15 + 1) * box
 }
 
+let pontos = 0;
+
 function criarBG() {
     context.fillStyle = "lightgreen";
     context.fillRect(0, 0, 16 * box, 16 * box);
@@ -25,6 +27,12 @@ function criarCobrinha() {
         context.fillStyle = "green";
         context.fillRect(snake[i].x, snake[i].y, box, box)
     }
+}
+
+function setPoints(){
+    context.fillStyle = "white";
+    context.font = '20px Arial';
+    context.fillText(pontos + " pontos", 10, 20);
 }
 
 function drawFood(){
@@ -57,6 +65,7 @@ function inciarJogo() {
     criarBG();
     criarCobrinha();
     drawFood();
+    setPoints();
 
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
@@ -71,6 +80,8 @@ function inciarJogo() {
     } else{
         food.x = Math.floor(Math.random() * 15 + 1) * box;
         food.y= Math.floor(Math.random() * 15 + 1) * box;
+
+        pontos++;
     }
 
     let newHead = {
